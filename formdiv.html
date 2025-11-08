@@ -1,0 +1,185 @@
+// ...existing code...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>報名表單</title>
+    <style>
+        :root{
+            --card-bg:#fff;
+            --page-bg:#f2f4f8;
+            --accent:#2b7cff;
+            --muted:#666;
+            --radius:10px;
+            --gap:14px;
+        }
+        html,body{height:100%;margin:0;font-family:Helvetica,Arial,sans-serif;background:var(--page-bg)}
+        .wrap{
+            min-height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:40px 16px;
+        }
+        .card{
+            background:var(--card-bg);
+            border-radius:var(--radius);
+            box-shadow:0 6px 20px rgba(20,30,50,0.08);
+            width:100%;
+            max-width:760px;
+            padding:28px;
+        }
+        h1{margin:0 0 8px;font-size:20px}
+        p.lead{color:var(--muted);margin:0 0 18px;font-size:14px}
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:var(--gap);
+        }
+        .row{
+            display:flex;
+            gap:12px;
+            align-items:center;
+        }
+        label{
+            width:140px;
+            min-width:120px;
+            color:#222;
+            font-size:14px;
+        }
+        .control{
+            flex:1;
+            display:flex;
+            align-items:center;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea{
+            width:100%;
+            padding:10px 12px;
+            border:1px solid #d7dde6;
+            border-radius:8px;
+            font-size:14px;
+            outline:none;
+            box-sizing:border-box;
+        }
+        textarea{min-height:110px;resize:vertical}
+        .group{
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            align-items:center;
+        }
+        .option{
+            display:flex;
+            gap:6px;
+            align-items:center;
+            background:#fafbff;
+            padding:6px 10px;
+            border-radius:8px;
+            border:1px solid #eef2ff;
+            font-size:14px;
+        }
+        .note{font-size:13px;color:var(--muted)}
+        .actions{display:flex;justify-content:flex-end;margin-top:6px}
+        .btn{
+            background:var(--accent);
+            color:#fff;
+            border:none;
+            padding:10px 16px;
+            border-radius:8px;
+            font-weight:600;
+            cursor:pointer;
+        }
+        .btn:active{transform:translateY(1px)}
+        @media (max-width:640px){
+            label{width:100%;min-width:unset}
+            .row{flex-direction:column;align-items:stretch}
+            .actions{justify-content:stretch}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card" role="region" aria-label="報名表單">
+            <h1>報名表單</h1>
+            <p class="lead">請填寫下列資料，我們會以您填寫的聯絡方式聯繫您。</p>
+
+            <form>
+                <div class="row">
+                    <label for="name">姓名</label>
+                    <div class="control">
+                        <input id="name" name="name" type="text" placeholder="例如：王小明" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="phone">電話</label>
+                    <div class="control">
+                        <input id="phone" name="phone" type="tel" placeholder="0912-345-678" pattern="[0-9\-+\s]+" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="email">信箱</label>
+                    <div class="control">
+                        <input id="email" name="email" type="email" placeholder="example@mail.com" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>性別</label>
+                    <div class="control">
+                        <div class="group" role="radiogroup" aria-label="性別">
+                            <label class="option"><input type="radio" name="gender" value="male" required /> 男</label>
+                            <label class="option"><input type="radio" name="gender" value="female" /> 女</label>
+                            <label class="option"><input type="radio" name="gender" value="other" /> 其他</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>興趣</label>
+                    <div class="control">
+                        <div class="group" aria-label="興趣">
+                            <label class="option"><input type="checkbox" name="interest" value="music" /> 音樂</label>
+                            <label class="option"><input type="checkbox" name="interest" value="sports" /> 運動</label>
+                            <label class="option"><input type="checkbox" name="interest" value="reading" /> 閱讀</label>
+                            <label class="option"><input type="checkbox" name="interest" value="travel" /> 旅遊</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="residence">居住地</label>
+                    <div class="control">
+                        <select id="residence" name="residence" required>
+                            <option value="">請選擇</option>
+                            <option value="taipei">台北市</option>
+                            <option value="newtaipei">新北市</option>
+                            <option value="taichung">台中市</option>
+                            <option value="kaohsiung">高雄市</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="about">關於我</label>
+                    <div class="control">
+                        <textarea id="about" name="about" placeholder="自我介紹、備註或需求..."></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn">送出報名</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+// ...existing code...
